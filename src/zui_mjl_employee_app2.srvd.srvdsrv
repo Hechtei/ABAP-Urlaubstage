@@ -1,0 +1,4 @@
+@EndUserText.label: 'Mitarbeiter App 2'
+define service ZUI_MJL_EMPLOYEE_APP2 {
+  expose ZC_MJL_HREQUEST_APP2 as HRequest;
+}

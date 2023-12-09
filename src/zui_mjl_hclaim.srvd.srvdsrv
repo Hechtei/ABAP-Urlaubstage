@@ -1,0 +1,4 @@
+@EndUserText.label: 'Ulraubsanspruch'
+define service ZUI_MJL_HCLAIM {
+  expose ZC_MJL_HCLAIM as Hclaim;
+}

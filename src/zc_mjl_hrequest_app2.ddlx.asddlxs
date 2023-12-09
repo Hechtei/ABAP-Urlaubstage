@@ -1,0 +1,85 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+    typeName: 'Holiday Request',
+    typeNamePlural: 'Holiday Requests',
+    title.value: 'HrequestId'
+
+ }
+annotate view ZC_MJL_HREQUEST_APP2 with
+{
+  @UI.facet:
+  [
+  { position: 10, targetQualifier: 'RequestDetails', label: 'Request details', type: #FIELDGROUP_REFERENCE },
+  { position: 20, targetQualifier: 'AdminData', label: 'Administative data', type: #FIELDGROUP_REFERENCE }
+  ]
+
+  /* Actions */
+
+  @UI.lineItem: [
+  { position: 10, dataAction: 'AcceptHRequest', label: 'Accept request', type: #FOR_ACTION },
+  { position: 20, dataAction: 'DeclineHRequest', label: 'Decline request', type: #FOR_ACTION }
+  ]
+
+  /*Fields*/
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+  @EndUserText.label: 'Superior'
+  SuperiorUuid;
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 30 }]
+  HrequestStartdate;
+
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 40 }]
+  HrequestEnddate;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'RequestDetails' }]
+  @EndUserText.label: 'Applicant'
+  ApplicantUuid;
+
+
+  @UI.fieldGroup: [{ position: 50, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 80 }]
+  HrequestComment;
+
+
+  @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails',  criticality: 'StatusCriticality' }]
+  @UI.lineItem: [{ position: 70, criticality: 'StatusCriticality'}]
+  @UI.selectionField: [{ position:20 }]
+  HrequestStatus;
+
+  @UI.lineItem: [{ position: 10 }]
+  @EndUserText.label: 'Superior'
+  EmployeeName;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{ position:10 }]
+  @EndUserText.label: 'Applicant'
+  ApplicantName;
+
+  @UI.lineItem: [{ position: 50 }]
+  @UI.fieldGroup: [{ position: 70, qualifier: 'RequestDetails' }]
+  HrequestDays;
+
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+  @EndUserText.label: 'Request Id'
+  HrequestId;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
+  CreatedBy;
+
+  @UI.fieldGroup: [{ position: 40, qualifier: 'AdminData' }]
+  CreatedAt;
+
+  @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
+  LastChangedBy;
+
+  @UI.fieldGroup: [{ position: 60, qualifier: 'AdminData' }]
+  LastChangedAt;
+
+
+}

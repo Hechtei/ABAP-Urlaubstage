@@ -1,0 +1,75 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+    typeNamePlural: 'Employees',
+    title.value: 'EmployeeNr'
+}
+annotate view ZC_MJL_EMPLOYEE with
+{
+  @UI.facet:
+  [
+  {
+          id: 'Facet1', type: #COLLECTION, label: 'Holiday data', position: 10
+      },
+      {
+          position: 10, type: #FIELDGROUP_REFERENCE, label: 'Employee details', targetQualifier: 'EmployeeDetails',parentId: 'Facet1'
+      },
+      {
+          position: 20,  type:#FIELDGROUP_REFERENCE, targetQualifier: 'HolidayData',parentId: 'Facet1', label: 'Holiday data'
+      },
+      {
+        position: 20 , targetElement: '_HCLAIM', label: 'Holiday claims', type: #LINEITEM_REFERENCE
+      },
+      {
+          position: 30, targetElement: '_HREQUEST', label: 'Holiday requests', type: #LINEITEM_REFERENCE
+      },
+      {
+          position: 50, type: #FIELDGROUP_REFERENCE, label: 'Administrative data', targetQualifier: 'AdministrativeData'
+      }
+  ]
+
+  @UI.fieldGroup: [{ position: 10, qualifier:'HolidayData' }]
+  @EndUserText.label: 'Usable days'
+  UsableDays;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'HolidayData' }]
+  @EndUserText.label: 'Planned days'
+  PlanedDays;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'HolidayData' }]
+  @EndUserText.label: 'Used days'
+  UsedDays;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'EmployeeDetails' }]
+  @UI.lineItem: [{ position: 10 }]
+  @UI.selectionField: [{ position: 10 }]
+  EmployeeNr;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'EmployeeDetails' }]
+  @UI.lineItem: [{ position: 20 }]
+  EmployeeFirstname;
+
+  @UI.fieldGroup: [{ position: 40, qualifier: 'EmployeeDetails' }]
+  @UI.lineItem: [{ position: 40 }]
+  @UI.selectionField: [{ position: 20 }]
+  EmployeeEntrydate;
+
+  @UI.fieldGroup: [{ position: 50, qualifier: 'EmployeeDetails' }]
+  @UI.lineItem: [{ position: 30 }]
+  EmployeeLastname;
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdministrativeData' }]
+  EmployeeUuid;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AdministrativeData' }]
+  CreatedBy;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'AdministrativeData' }]
+  CreatedAt;
+
+  @UI.fieldGroup: [{ position: 40, qualifier: 'AdministrativeData' }]
+  LastChangedBy;
+
+  @UI.fieldGroup: [{ position: 50, qualifier: 'AdministrativeData' }]
+  LastChangedAt;
+}

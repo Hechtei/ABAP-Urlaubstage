@@ -1,0 +1,16 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_MJL_EMPLOYEE_APP2 alias Employee_App2
+{
+  use association _HREQUEST;
+}
+
+define behavior for ZC_MJL_HREQUEST_APP2 alias HRequest_App2
+{
+
+  use action AcceptHRequest;
+  use action DeclineHRequest;
+
+  use association _APPLICANT;
+}

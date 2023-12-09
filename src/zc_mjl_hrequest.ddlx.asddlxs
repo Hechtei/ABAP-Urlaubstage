@@ -1,0 +1,71 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+    typeName: 'Holiday request',
+    typeNamePlural: 'Holiday requests',
+    title.value: 'HrequestId'
+
+ }
+annotate view ZC_MJL_HREQUEST with
+{
+  @UI.facet:
+  [
+  { position: 10, targetQualifier: 'RequestDetails', label: 'Request details', type: #FIELDGROUP_REFERENCE },
+  { position: 20, targetQualifier: 'AdminData', label: 'Administative data', type: #FIELDGROUP_REFERENCE }
+  ]
+
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 30 }]
+  HrequestStartdate;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 40 }]
+  HrequestEnddate;
+
+  @UI.fieldGroup: [{ position: 25, qualifier: 'RequestDetails' }]
+  @EndUserText.label: 'Superior'
+  SuperiorUuid;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'RequestDetails' }]
+  HrequestComment;
+
+  @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails',  criticality: 'StatusCriticality' }]
+  @UI.lineItem: [{ position: 70, criticality: 'StatusCriticality'}]
+  @UI.selectionField: [{ position:20 }]
+  HrequestStatus;
+
+  @UI.fieldGroup: [{ position: 70, qualifier:'RequestDetails' }]
+  @UI.lineItem: [{ position: 45 }]
+  HrequestDays;
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+  @EndUserText.label: 'Request Id'
+  HrequestId;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+  @EndUserText.label: 'Applicant'
+  ApplicantUuid;
+
+  @UI.lineItem: [{ position: 10 }]
+  @EndUserText.label: 'Superior'
+  EmployeeName;
+
+  @UI.selectionField: [{ position:10 }]
+  @EndUserText.label: 'Applicant'
+  ApplicantName;
+
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
+  CreatedBy;
+
+  @UI.fieldGroup: [{ position: 40, qualifier: 'AdminData' }]
+  CreatedAt;
+
+  @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
+  LastChangedBy;
+
+  @UI.fieldGroup: [{ position: 60, qualifier: 'AdminData' }]
+  LastChangedAt;
+
+}

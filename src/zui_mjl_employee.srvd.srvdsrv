@@ -1,0 +1,6 @@
+@EndUserText.label: 'Mitarbeiter'
+define service ZUI_MJL_EMPLOYEE {
+  expose ZC_MJL_EMPLOYEE as Employee;
+  expose ZC_MJL_HCLAIM   as HClaim;
+  expose ZC_MJL_HREQUEST as HRequest;
+}

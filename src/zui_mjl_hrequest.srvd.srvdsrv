@@ -1,0 +1,4 @@
+@EndUserText.label: 'Request'
+define service ZUI_MJL_HREQUEST {
+  expose ZC_MJL_HREQUEST as Hrequest;
+}

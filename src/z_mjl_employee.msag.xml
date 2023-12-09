@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>Z_MJL_EMPLOYEE</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Mitarbeiter Message</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_MJL_EMPLOYEE</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>The holidayrequest was accepted successfully</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_MJL_EMPLOYEE</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>The holidayrequest was declined successfully</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_MJL_EMPLOYEE</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Approval failed: The holidyrequest was already marked as accepted</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_MJL_EMPLOYEE</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Decline failed: The holidyrequest was already marked as declined</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_MJL_EMPLOYEE</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Not enough vacation days left</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>Z_MJL_EMPLOYEE</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>End date cant be before start date</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

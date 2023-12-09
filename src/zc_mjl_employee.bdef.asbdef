@@ -1,0 +1,30 @@
+
+projection;
+strict ( 2 );
+
+define behavior for ZC_MJL_EMPLOYEE alias _Employee
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _HCLAIM { create; }
+  use association _HREQUEST { create; }
+}
+
+define behavior for ZC_MJL_HCLAIM alias _HClaim
+{
+  use update;
+  use delete;
+
+  use association _EMPLOYEE;
+}
+
+define behavior for ZC_MJL_HREQUEST alias _HRequest
+{
+  use update;
+  use delete;
+
+  use association _APPLICANT;
+  use association _SUPERIOR;
+}

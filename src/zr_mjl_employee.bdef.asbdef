@@ -1,0 +1,110 @@
+managed implementation in class zbp_r_mjl_employee unique;
+strict ( 2 );
+
+define behavior for ZR_MJL_EMPLOYEE alias Employee
+persistent table zmjl_employee
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _HCLAIM { create; }
+  association _HREQUEST { create; }
+
+
+
+  field ( readonly, numbering : managed ) EmployeeUuid;
+  field ( readonly ) CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
+
+  mapping for zmjl_employee corresponding
+    {
+      EmployeeUuid      = employee_uuid;
+      CreatedAt         = created_at;
+      CreatedBy         = created_by;
+      EmployeeEntrydate = employee_entrydate;
+      EmployeeFirstname = employee_firstname;
+      EmployeeLastname  = employee_lastname;
+      EmployeeNr        = employee_nr;
+      LastChangedAt     = last_changed_at;
+      LastChangedBy     = last_changed_by;
+    }
+
+}
+
+define behavior for ZR_MJL_HCLAIM alias _HCLAIM
+persistent table zmjl_hclaim
+lock dependent by _EMPLOYEE
+authorization dependent by _EMPLOYEE
+//etag master <field_name>
+{
+  update;
+  delete;
+  association _EMPLOYEE;
+  field ( readonly ) EmployeeUuid;
+  field ( readonly, numbering : managed ) HclaimId;
+  field ( readonly ) CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
+
+
+  mapping for zmjl_hclaim corresponding
+    {
+      CreatedAt     = created_at;
+      CreatedBy     = created_by;
+      EmployeeUuid  = employee_uuid;
+      HclaimId      = hclaim_id;
+      HlcaimDays    = hlcaim_days;
+      HlcaimYear    = hlcaim_year;
+      LastChangedAt = last_changed_at;
+      LastChangedBy = last_changed_by;
+    }
+
+}
+
+define behavior for ZR_MJL_HREQUEST alias HREQUEST
+persistent table zmjl_hrequest
+lock dependent by _APPLICANT
+authorization dependent by _APPLICANT
+//etag master <field_name>
+{
+  update;
+  delete;
+
+  association _APPLICANT;
+  association _SUPERIOR;
+  field ( readonly ) ApplicantUuid, HrequestStatus, HrequestDays;
+  field ( readonly, numbering : managed ) HrequestId;
+  field ( readonly ) CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
+  field ( mandatory : create ) SuperiorUuid, HrequestStartdate, HrequestEnddate;
+
+  //actions
+  action AcceptHRequest result [1] $self;
+  action DeclineHRequest result [1] $self;
+
+  //validations
+  validation ValidateDays on save { create; }
+  validation ValidateDate on save { create; }
+
+
+
+  //determinations
+  determination DetermineStatus on modify { field SuperiorUuid, HrequestStartdate, HrequestEnddate, HrequestComment; }
+  determination DetermineUsedDays on modify { create; }
+
+
+  mapping for zmjl_hrequest corresponding
+    {
+      ApplicantUuid     = applicant_uuid;
+      CreatedAt         = created_at;
+      CreatedBy         = created_by;
+      HrequestComment   = hrequest_comment;
+      HrequestEnddate   = hrequest_enddate;
+      HrequestStartdate = hrequest_startdate;
+      HrequestStatus    = hrequest_status;
+      LastChangedAt     = last_changed_at;
+      LastChangedBy     = last_changed_by;
+      SuperiorUuid      = superior_uuid;
+      HrequestId        = hrequest_id;
+      HrequestDays      = hreqeust_days;
+    }
+}

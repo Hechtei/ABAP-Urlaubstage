@@ -1,0 +1,51 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+    typeName: 'Holiday claim',
+    typeNamePlural: 'Holiday claims',
+    title.value: 'HclaimId'
+
+ }
+annotate view ZC_MJL_HCLAIM with
+{
+  @UI.facet:
+  [
+   { position: 10, targetQualifier: 'ClaimDetails', label: 'Claim details', type: #FIELDGROUP_REFERENCE },
+   { position: 20, targetQualifier: 'AdminData', label: 'Administative data', type: #FIELDGROUP_REFERENCE }
+  ]
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'ClaimDetails' }]
+  @EndUserText.label: 'Employee'
+  EmployeeUuid;
+
+  @UI.lineItem: [{ position: 20 }]
+  @EndUserText.label: 'Employee'
+  EmployeeName;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'ClaimDetails' }]
+  @UI.lineItem: [{ position: 30 }]
+  HlcaimYear;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'ClaimDetails' }]
+  @UI.lineItem: [{ position: 40 }]
+  HlcaimDays;
+
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+  @EndUserText.label: 'Claim Id'
+  HclaimId;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+  CreatedBy;
+
+  @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
+  CreatedAt;
+
+  @UI.fieldGroup: [{ position: 40, qualifier: 'AdminData' }]
+  LastChangedBy;
+
+  @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
+  LastChangedAt;
+
+
+
+}
